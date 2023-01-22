@@ -24,7 +24,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 77452
+  controlID: 77928
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -143,7 +143,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 1
-  controlID: 77453
+  controlID: 77929
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 100}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
-  controlID: 77454
+  controlID: 77930
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -226,10 +226,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 1.2000122}
-      m_SelectedIDs: c4870100
-      m_LastClickedID: 100292
-      m_ExpandedIDs: 1c6bfcff246bfcff286bfcff5c6bfcff606bfcff4e6efcff2c07fdff0a34feff7835feffb435feffd235feffa24afeffce4afeff0a4bfeff544bfeff1e7bfeff987dfeff867efeff228bfeffd8faffffe0faffffe4faffff18fbffff1cfbffffec5b0000085c00000c5c000098870100c4870100ee870100f287010044880100
+      scrollPos: {x: 0, y: 120}
+      m_SelectedIDs: dcac0100
+      m_LastClickedID: 109788
+      m_ExpandedIDs: 3040fcff3840fcff3c40fcff7040fcff7440fcff0643fcff0e43fcff1243fcff4643fcff4a43fcff7846fcff8046fcff8446fcffb846fcffbc46fcff9649fcff1c6bfcff246bfcff286bfcff5c6bfcff606bfcff4e6efcff2c07fdff0a34feff7835feffb435feffd235feffa24afeffce4afeff0a4bfeff544bfeff1e7bfeff987dfeff867efeff228bfeffd8faffffe0faffffe4faffff18fbffff1cfbffffec5b0000085c00000c5c000098870100c4870100ee870100f287010044880100a0a70100daa7010030a8010034a8010086a80100a6ab0100e0ab010036ac01003aac01008cac0100dcac010016ad010042ad01006cad010070ad0100c2ad0100
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: AnimatorControllerTool
+  m_Name: SceneView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -272,14 +272,14 @@ MonoBehaviour:
     y: 0
     width: 427.19998
     height: 392.8
-  m_MinSize: {x: 102, y: 121}
+  m_MinSize: {x: 202, y: 221}
   m_MaxSize: {x: 4002, y: 4021}
-  m_ActualView: {fileID: 9}
+  m_ActualView: {fileID: 8}
   m_Panes:
   - {fileID: 8}
   - {fileID: 9}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -538,9 +538,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -4.4351926, y: 2.3959792, z: -2.0361109}
+    m_Target: {x: -3.2255552, y: -0.3034178, z: -1.8386934}
     speed: 2
-    m_Value: {x: -4.4351926, y: 2.3959792, z: -2.0361109}
+    m_Value: {x: -3.2255552, y: -0.3034178, z: -1.8386934}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -591,9 +591,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: -0.10068515, y: 0.8465211, z: -0.1727532, w: -0.49337703}
   m_Size:
-    m_Target: 54.13541
+    m_Target: 5.4156437
     speed: 2
-    m_Value: 54.13541
+    m_Value: 5.4156437
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -651,14 +651,14 @@ MonoBehaviour:
     - {fileID: 2457507146052388140, guid: 13c94427214211646ad43fd8b8e500a9, type: 2}
     - {fileID: -3408428913414107142, guid: 13c94427214211646ad43fd8b8e500a9, type: 2}
     m_ValueSerializationHelper:
-    - e00: 0.40885472
+    - e00: 0.2849941
       e01: 0
       e02: 0
-      e03: 42.074657
+      e03: 1.9562683
       e10: 0
-      e11: 0.40885472
+      e11: 0.2849941
       e12: 0
-      e13: 172.21497
+      e13: 151.1613
       e20: 0
       e21: 0
       e22: 1
@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ConsoleWindow
+  m_Name: ProjectBrowser
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -744,14 +744,14 @@ MonoBehaviour:
     y: 392.8
     width: 903.2
     height: 272.40002
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 13}
+  m_MinSize: {x: 231, y: 271}
+  m_MaxSize: {x: 10001, y: 10021}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 12}
   - {fileID: 13}
-  m_Selected: 1
-  m_LastSelected: 0
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -793,21 +793,21 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/QuarterView 3D Action BE5/Models
+    - Assets/Prefabs
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/QuarterView 3D Action BE5/Models
+  - Assets/Prefabs
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\yongu\Desktop\code\Unity\ProgrammersUnity\BeatsBangShooting
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 79}
-    m_SelectedIDs: ec5d0000
-    m_LastClickedID: 24044
+    m_SelectedIDs: 1c800000
+    m_LastClickedID: 32796
     m_ExpandedIDs: 00000000a05d0000b25d000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -861,9 +861,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 445d0000
-    m_LastClickedInstanceID: 23876
-    m_HadKeyboardFocusLastEvent: 0
+    m_SelectedInstanceIDs: dcac0100
+    m_LastClickedInstanceID: 109788
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000b0650000605c0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -888,7 +888,7 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
     m_NewAssetIndexInList: -1
-    m_ScrollPosition: {x: 0, y: 265.59998}
+    m_ScrollPosition: {x: 0, y: 0}
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
@@ -981,7 +981,7 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_LastInspectedObjectInstanceID: -1
-  m_LastVerticalScrollValue: 28
+  m_LastVerticalScrollValue: 0
   m_GlobalObjectId: 
   m_InspectorMode: 0
   m_LockTracker:
