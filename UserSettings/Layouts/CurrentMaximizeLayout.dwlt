@@ -14,7 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Children:
   - {fileID: 3}
-  - {fileID: 14}
   - {fileID: 13}
   m_Position:
     serializedVersion: 2
@@ -1228,7 +1227,6 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 11}
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -1245,7 +1243,6 @@ MonoBehaviour:
     m_GridSize: 64
   m_SkipHiddenPackages: 0
   m_DirectoriesAreaWidth: 207
---- !u!114 &13
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1274,7 +1271,6 @@ MonoBehaviour:
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
     m_SaveData: []
---- !u!114 &14
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1303,14 +1299,11 @@ MonoBehaviour:
 >>>>>>> parent of 31e8781 (Log files restore)
   m_MinSize: {x: 276, y: 71}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 15}
   m_ActualView: {fileID: 14}
   m_Panes:
-  - {fileID: 15}
   - {fileID: 14}
   m_Selected: 0
   m_LastSelected: 0
---- !u!114 &15
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
