@@ -20,6 +20,8 @@ public class PlayerAim : MonoBehaviour
     void Start()
     {
         vCam = GetComponentInChildren<CinemachineVirtualCamera>();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         hipFov = vCam.m_Lens.FieldOfView;
         SwitchState(Hip);
 
