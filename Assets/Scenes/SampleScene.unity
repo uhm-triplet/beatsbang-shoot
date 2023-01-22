@@ -148,14 +148,8 @@ MonoBehaviour:
   type: 1
   damage: 0
   rate: 0.15
-  maxAmmo: 50
-  curAmmo: 50
   meleeArea: {fileID: 0}
   trailEffect: {fileID: 0}
-  bulletPos: {fileID: 0}
-  bullet: {fileID: 0}
-  bulletCasePos: {fileID: 0}
-  bulletCase: {fileID: 0}
 --- !u!1 &44738957
 GameObject:
   m_ObjectHideFlags: 0
@@ -5961,14 +5955,8 @@ MonoBehaviour:
   type: 0
   damage: 25
   rate: 0.4
-  maxAmmo: 0
-  curAmmo: 0
   meleeArea: {fileID: 764363675}
   trailEffect: {fileID: 1990493930}
-  bulletPos: {fileID: 0}
-  bullet: {fileID: 0}
-  bulletCasePos: {fileID: 0}
-  bulletCase: {fileID: 0}
 --- !u!1 &779935338
 GameObject:
   m_ObjectHideFlags: 0
@@ -6576,6 +6564,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74e78434c05ed1a43a8334d31080e766, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bulletPos: {fileID: 0}
+  bullet: {fileID: 0}
+  bulletCasePos: {fileID: 0}
+  bulletCase: {fileID: 0}
 --- !u!1001 &1173041472
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17024,14 +17016,8 @@ MonoBehaviour:
   type: 1
   damage: 0
   rate: 0.4
-  maxAmmo: 15
-  curAmmo: 15
   meleeArea: {fileID: 0}
   trailEffect: {fileID: 0}
-  bulletPos: {fileID: 0}
-  bullet: {fileID: 0}
-  bulletCasePos: {fileID: 0}
-  bulletCase: {fileID: 0}
 --- !u!1 &1813835349
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class PlayerWeapon : MonoBehaviour
 
     void Attack()
     {
-        equipWeapon = GameObject.Find("Player").GetComponent<PlayerItem>().equipWeapon;
+        // equipWeapon = GameObject.Find("Player").GetComponent<PlayerItem>().equipWeapon;
         if (equipWeapon == null) return;
 
         fireDelay += Time.deltaTime;
