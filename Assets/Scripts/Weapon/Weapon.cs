@@ -13,10 +13,19 @@ public class Weapon : MonoBehaviour
 
     public BoxCollider meleeArea;
     public TrailRenderer trailEffect;
-    public Transform bulletPos;
+    [SerializeField] Transform bulletPos;
     public GameObject bullet;
+    [SerializeField] float bulletVelocity;
     public Transform bulletCasePos;
     public GameObject bulletCase;
+
+    PlayerAim aim;
+
+    void Start()
+    {
+        aim = GetComponentInParent<PlayerAim>();
+    }
+
 
     public void Use()
     {
@@ -47,13 +56,16 @@ public class Weapon : MonoBehaviour
 
     IEnumerator Shot()
     {
+        bulletPos.LookAt(aim.aimPos);
+
         GameObject instantBullet = Instantiate(bullet, bulletPos.position, bulletPos.rotation);
         Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
-        bulletRigid.velocity = bulletPos.forward * 50;
+        bulletRigid.AddForce(bulletPos.forward * bulletVelocity, ForceMode.Impulse);
+
         yield return null;
         GameObject instantBulletCase = Instantiate(bulletCase, bulletCasePos.position, bulletCasePos.rotation);
         Rigidbody bulletCaseRigid = instantBulletCase.GetComponent<Rigidbody>();
-        Vector3 caseVec = bulletCasePos.forward * Random.Range(-3, -2) + Vector3.up * Random.Range(2, 3);
+        Vector3 caseVec = bulletCasePos.forward * Random.Range(-4, -3) + Vector3.up * Random.Range(2, 3);
         bulletCaseRigid.AddForce(caseVec, ForceMode.Impulse);
         bulletCaseRigid.AddTorque(Vector3.up * 10, ForceMode.Impulse);
 

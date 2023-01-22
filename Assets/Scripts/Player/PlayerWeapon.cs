@@ -7,9 +7,11 @@ public class PlayerWeapon : MonoBehaviour
     bool fDown;
     bool rDown;
     bool isFireReady;
+    [HideInInspector] public bool isReloading;
     float fireDelay;
     Animator animator;
-    Weapon equipWeapon;
+    PlayerItem playerItem;
+    PlayerMove playerMove;
 
     void GetInput()
     {
@@ -19,37 +21,60 @@ public class PlayerWeapon : MonoBehaviour
 
     void Awake()
     {
-        equipWeapon = GameObject.Find("Player").GetComponent<PlayerItem>().equipWeapon;
+        playerMove = GetComponentInParent<PlayerMove>();
+        playerItem = GetComponentInParent<PlayerItem>();
         animator = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // equipWeapon = GameObject.Find("Player").GetComponent<PlayerItem>().equipWeapon;
         GetInput();
         Attack();
+        Reload();
     }
 
 
     void Attack()
     {
         // equipWeapon = GameObject.Find("Player").GetComponent<PlayerItem>().equipWeapon;
-        if (equipWeapon == null) return;
+        if (playerItem.equipWeapon == null) return;
 
         fireDelay += Time.deltaTime;
-        isFireReady = equipWeapon.rate < fireDelay;
+        isFireReady = playerItem.equipWeapon.rate < fireDelay;
 
-        if (fDown && isFireReady)
+        if (fDown && isFireReady && !isReloading && !playerMove.isDodge)
         {
-            equipWeapon.Use();
-            animator.SetTrigger(equipWeapon.type == Weapon.Type.Melee ? "doSwing" : "doShot");
+            playerItem.equipWeapon.Use();
+            animator.SetTrigger(playerItem.equipWeapon.type == Weapon.Type.Melee ? "doSwing" : "doShot");
             fireDelay = 0;
         }
     }
 
     void Reload()
     {
-        if (equipWeapon != null) return;
+        if (playerItem.equipWeapon == null) return;
+
+        if (playerItem.equipWeapon.type == Weapon.Type.Melee) return;
+
+        if (playerItem.ammo == 0) return;
+
+        if (rDown && isFireReady && !isReloading)
+        {
+            animator.SetTrigger("doReload");
+            isReloading = true;
+            Debug.Log("Reload");
+
+            Invoke("ReloadOut", 3f);
+        }
+    }
+
+    void ReloadOut()
+    {
+        int reAmmo = playerItem.ammo < playerItem.equipWeapon.maxAmmo ? playerItem.ammo : playerItem.equipWeapon.maxAmmo;
+        playerItem.equipWeapon.curAmmo = reAmmo;
+        playerItem.ammo -= reAmmo;
+        isReloading = false;
+        // 장전 갯수 로직 정확하게 바꾸기
     }
 }

@@ -9,13 +9,13 @@ public class PlayerMove : MonoBehaviour
     float vAxis;
     bool runDown;
     [SerializeField] float groundYOffset;
-    [SerializeField] float gravity = -9.81f;
+    [SerializeField] float gravity = -25;
     Vector3 velocity;
     [SerializeField] LayerMask groundMask;
     bool jumpDown;
-    // bool isJump;
+    bool isJump;
     bool dodgeDown;
-    bool isDodge;
+    [HideInInspector] public bool isDodge;
 
     Animator animator;
     CharacterController controller;
@@ -23,9 +23,12 @@ public class PlayerMove : MonoBehaviour
     Vector3 spherePos;
     Vector3 dodgeVec;
     Rigidbody rigid;
+
+    PlayerWeapon playerWeapon;
     // Start is called before the first frame update
     void Awake()
     {
+        playerWeapon = GetComponentInParent<PlayerWeapon>();
         controller = GetComponent<CharacterController>();
         rigid = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
@@ -38,8 +41,9 @@ public class PlayerMove : MonoBehaviour
         move();
         Gravity();
         turn();
-        // jump();
-        // dodge();
+        jump();
+        dodge();
+        jumpEnd();
     }
 
     void getInput()
@@ -58,72 +62,72 @@ public class PlayerMove : MonoBehaviour
 
         if (isDodge)
             moveVec = dodgeVec;
-        if (runDown)
+        if (runDown && !playerWeapon.isReloading)
             controller.Move(moveVec * speed * Time.deltaTime);
         else
             controller.Move(moveVec * speed * 0.6f * Time.deltaTime);
         // transform.position += moveVec * speed * 0.6f * Time.deltaTime;
 
         animator.SetBool("isWalk", moveVec != Vector3.zero);
-        animator.SetBool("isRun", runDown);
+        animator.SetBool("isRun", runDown && !playerWeapon.isReloading);
     }
 
     bool isGrounded()
     {
         spherePos = new Vector3(transform.position.x, transform.position.y - groundYOffset, transform.position.z);
-        if (Physics.CheckSphere(spherePos, controller.radius - 0.05f, groundMask)) return true;
+        if (Physics.CheckSphere(spherePos, controller.radius - 0.05f, groundMask))
+        {
+            return true;
+        }
         else return false;
     }
 
     void Gravity()
     {
         if (!isGrounded()) velocity.y += gravity * Time.deltaTime;
-        else if (velocity.y < 0) velocity.y = 2;
+        else if (velocity.y < 0) velocity.y = -2;
         controller.Move(velocity * Time.deltaTime);
     }
 
 
-    // void jump()
-    // {
-    //     if (jumpDown && !isJump && !isDodge)
-    //     {
-    //         rigid.AddForce(Vector3.up * 20, ForceMode.Impulse);
-    //         animator.SetBool("isJump", true);
-    //         animator.SetTrigger("doJump");
-    //         isJump = true;
-    //     }
+    void jump()
+    {
+        if (jumpDown && !isJump && !isDodge && !playerWeapon.isReloading)
+        {
+            velocity.y += 15;
+            animator.SetBool("isJump", true);
+            animator.SetTrigger("doJump");
+            isJump = true;
+        }
+    }
 
-    // }
+    void jumpEnd()
+    {
+        if (isJump && isGrounded())
+        {
+            animator.SetBool("isJump", false);
+            isJump = false;
+        }
+    }
+    void dodge()
+    {
+        if (dodgeDown && !isDodge && !isJump)
+        {
+            dodgeVec = moveVec;
+            speed *= 2;
+            animator.SetTrigger("doDodge");
+            isDodge = true;
 
-    // void dodge()
-    // {
-    //     if (dodgeDown && !isDodge && !isJump)
-    //     {
-    //         dodgeVec = moveVec;
-    //         speed *= 2;
-    //         animator.SetTrigger("doDodge");
-    //         isDodge = true;
+            Invoke("endDodge", 0.4f);
+            //쿨타임 만들고 싶으면 endDodge를 두개로 쪼개서 invoke 시간 따로
+        }
 
-    //         Invoke("endDodge", 0.4f);
-    //         //쿨타임 만들고 싶으면 endDodge를 두개로 쪼개서 invoke 시간 따로
-    //     }
-
-    // }
-
-    // void endDodge()
-    // {
-    //     speed *= 0.5f;
-    //     isDodge = false;
-    // }
-
-    // private void OnCollisionEnter(Collision other)
-    // {
-    //     if (other.gameObject.tag == "Floor")
-    //     {
-    //         animator.SetBool("isJump", false);
-    //         isJump = false;
-    //     }
-    // }
+    }
+    void endDodge()
+    {
+        speed *= 0.5f;
+        isDodge = false;
+    }
 
     void turn()
     {
