@@ -25,6 +25,8 @@ public class PlayerMove : MonoBehaviour
     Rigidbody rigid;
 
     PlayerWeapon playerWeapon;
+
+    bool debugButton;
     // Start is called before the first frame update
     void Awake()
     {
@@ -40,10 +42,10 @@ public class PlayerMove : MonoBehaviour
         getInput();
         move();
         Gravity();
-        turn();
         jump();
         dodge();
         jumpEnd();
+        debug();
     }
 
     void getInput()
@@ -53,6 +55,7 @@ public class PlayerMove : MonoBehaviour
         runDown = Input.GetButton("Run");
         jumpDown = Input.GetButtonDown("Jump");
         dodgeDown = Input.GetButtonDown("Dodge");
+        debugButton = Input.GetKey("p");
     }
 
     void move()
@@ -129,8 +132,14 @@ public class PlayerMove : MonoBehaviour
         isDodge = false;
     }
 
-    void turn()
+    void debug()
     {
-        transform.LookAt(transform.position + moveVec);
+        if (debugButton)
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
+
     }
+
 }
