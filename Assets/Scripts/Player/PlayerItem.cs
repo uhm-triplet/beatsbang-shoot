@@ -19,6 +19,8 @@ public class PlayerItem : MonoBehaviour
     public int maxHealth;
     public int maxHasGrenades;
 
+    public int kill;
+    public int death;
 
     GameObject nearObject;
     [HideInInspector] public Weapon equipWeapon;

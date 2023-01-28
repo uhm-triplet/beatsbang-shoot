@@ -19,11 +19,11 @@ public class Weapon : MonoBehaviour
     public Transform bulletCasePos;
     public GameObject bulletCase;
 
-    PlayerAim aim;
+    PlayerAim playerAim;
 
     void Start()
     {
-        aim = GetComponentInParent<PlayerAim>();
+        playerAim = GetComponentInParent<PlayerAim>();
     }
 
 
@@ -56,8 +56,8 @@ public class Weapon : MonoBehaviour
 
     IEnumerator Shot()
     {
-        bulletPos.LookAt(aim.aimPos);
 
+        bulletPos.LookAt(playerAim.aimPos);
         GameObject instantBullet = Instantiate(bullet, bulletPos.position, bulletPos.rotation);
         Rigidbody bulletRigid = instantBullet.GetComponent<Rigidbody>();
         bulletRigid.AddForce(bulletPos.forward * bulletVelocity, ForceMode.Impulse);
@@ -68,6 +68,7 @@ public class Weapon : MonoBehaviour
         Vector3 caseVec = bulletCasePos.forward * Random.Range(-4, -3) + Vector3.up * Random.Range(2, 3);
         bulletCaseRigid.AddForce(caseVec, ForceMode.Impulse);
         bulletCaseRigid.AddTorque(Vector3.up * 10, ForceMode.Impulse);
+
 
     }
 }

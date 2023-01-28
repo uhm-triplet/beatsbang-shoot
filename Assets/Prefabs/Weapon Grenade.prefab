@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 922914821646997545}
   - component: {fileID: 4769858540812174339}
   - component: {fileID: 5041384136550257605}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 1418828239138352589}
   - component: {fileID: 1418828239138352590}
   - component: {fileID: 1418828239138352591}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Weapon Grenade
   m_TagString: Item
   m_Icon: {fileID: 0}
