@@ -6,16 +6,22 @@ public class PlayerWeapon : MonoBehaviour
 {
     bool fDown;
     bool rDown;
+    bool gDown;
     bool isFireReady;
     [HideInInspector] public bool isReloading;
     float fireDelay;
+
+    public GameObject grenadeObj;
+    [SerializeField] Transform grenadePos;
     Animator animator;
     PlayerItem playerItem;
     PlayerMove playerMove;
+    PlayerAim playerAim;
 
     void GetInput()
     {
         fDown = Input.GetButton("Fire1");
+        gDown = Input.GetButton("Grenade");
         rDown = Input.GetButtonDown("Reload");
     }
 
@@ -23,6 +29,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         playerMove = GetComponentInParent<PlayerMove>();
         playerItem = GetComponentInParent<PlayerItem>();
+        playerAim = GetComponentInParent<PlayerAim>();
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -31,6 +38,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         GetInput();
         Attack();
+        Grenade();
         Reload();
     }
 
@@ -38,7 +46,7 @@ public class PlayerWeapon : MonoBehaviour
     void Attack()
     {
         // equipWeapon = GameObject.Find("Player").GetComponent<PlayerItem>().equipWeapon;
-        if (playerItem.equipWeapon == null) return;
+        if (playerItem.equipWeapon == null || playerItem.equipWeapon.curAmmo == 0) return;
 
         fireDelay += Time.deltaTime;
         isFireReady = playerItem.equipWeapon.rate < fireDelay;
@@ -51,6 +59,22 @@ public class PlayerWeapon : MonoBehaviour
         }
     }
 
+    void Grenade()
+    {
+        if (playerItem.hasGrenades == 0) return;
+        if (gDown && !isReloading)
+        {
+            grenadePos.LookAt(playerAim.aimPos);
+            GameObject instantGrenade = Instantiate(grenadeObj, grenadePos.position, grenadePos.rotation);
+            Rigidbody grenadeRigid = instantGrenade.GetComponent<Rigidbody>();
+            grenadeRigid.AddForce(grenadePos.forward * 20, ForceMode.Impulse);
+            grenadeRigid.AddForce(grenadePos.up * 10, ForceMode.Impulse);
+            grenadeRigid.AddTorque(Vector3.back * 10, ForceMode.Impulse);
+
+            playerItem.hasGrenades -= 1;
+            playerItem.grenades[playerItem.hasGrenades].SetActive(false);
+        }
+    }
     void Reload()
     {
         if (playerItem.equipWeapon == null) return;
@@ -71,8 +95,11 @@ public class PlayerWeapon : MonoBehaviour
 
     void ReloadOut()
     {
-        int reAmmo = playerItem.ammo < playerItem.equipWeapon.maxAmmo ? playerItem.ammo : playerItem.equipWeapon.maxAmmo;
-        playerItem.equipWeapon.curAmmo = reAmmo;
+
+
+        int requiredAmmo = playerItem.equipWeapon.maxAmmo - playerItem.equipWeapon.curAmmo;
+        int reAmmo = playerItem.ammo < requiredAmmo ? playerItem.ammo : requiredAmmo;
+        playerItem.equipWeapon.curAmmo += reAmmo;
         playerItem.ammo -= reAmmo;
         isReloading = false;
         // 장전 갯수 로직 정확하게 바꾸기

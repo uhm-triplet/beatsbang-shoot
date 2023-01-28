@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4225977929059026706}
   - component: {fileID: 7389780301177100866}
   - component: {fileID: 6699152116327891220}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8630801007908566911}
   - component: {fileID: 8630801007908566910}
   - component: {fileID: 8630801007908566909}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Item Ammo
   m_TagString: Item
   m_Icon: {fileID: 0}

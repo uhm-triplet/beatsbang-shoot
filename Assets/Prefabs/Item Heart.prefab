@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8057158394146992500}
   - component: {fileID: 8057158394146992501}
   - component: {fileID: 8057158394146992502}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Item Heart
   m_TagString: Item
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 9026898178200323925}
   - component: {fileID: 2445810807746315681}
   - component: {fileID: 2576401053328048944}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Mesh Object
   m_TagString: Untagged
   m_Icon: {fileID: 0}

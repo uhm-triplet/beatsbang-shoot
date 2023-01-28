@@ -26,7 +26,7 @@ public class PlayerMove : MonoBehaviour
 
     PlayerWeapon playerWeapon;
 
-    bool debugButton;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -45,7 +45,7 @@ public class PlayerMove : MonoBehaviour
         jump();
         dodge();
         jumpEnd();
-        debug();
+
     }
 
     void getInput()
@@ -55,7 +55,7 @@ public class PlayerMove : MonoBehaviour
         runDown = Input.GetButton("Run");
         jumpDown = Input.GetButtonDown("Jump");
         dodgeDown = Input.GetButtonDown("Dodge");
-        debugButton = Input.GetKey("p");
+
     }
 
     void move()
@@ -132,14 +132,6 @@ public class PlayerMove : MonoBehaviour
         isDodge = false;
     }
 
-    void debug()
-    {
-        if (debugButton)
-        {
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
-        }
 
-    }
 
 }
