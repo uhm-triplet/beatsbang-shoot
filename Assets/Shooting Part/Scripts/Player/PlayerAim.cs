@@ -15,7 +15,7 @@ public class PlayerAim : MonoBehaviour
 
     public Transform aimPos;
     // [HideInInspector] public Vector3 actualAimPos;
-    [SerializeField] float aimSmoothSpeed = 20;
+    [SerializeField] float aimSmoothSpeed = 50;
     [SerializeField] LayerMask aimMask;
 
     PlayerAimBaseState currentState;
